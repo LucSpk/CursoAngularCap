@@ -10,25 +10,22 @@ import { CursoService } from './curso.service';
 export class CursosComponent implements OnInit {
 
   // - Atributos
-  vetorDeCursos!:Curso[]
-  curso!:Curso
-  private id!: number;
-
-  nomeDoCurso!:string
-  valorDoCurso!:number
-  areaDoCurso!:string
+  public vetorDeCursos!:Curso[]
+  public curso!:Curso
+  public id!: number;
 
   // - Construtor
   constructor(private servico:CursoService) { }
 
   // - Inicialização
   ngOnInit(): void {
-    this.curso = new Curso()
-    this.vetorDeCursos = this.servico.listar()
+    this.curso = new Curso();
+    this.vetorDeCursos = this.servico.listar();
   }
 
   //this.servico.cadastrar(this.curso)
   cadastrar() {
-    alert(this.curso.valorCurso)
+    this.servico.cadastrar(this.curso);
+    this.curso = new Curso();
   }
 }
